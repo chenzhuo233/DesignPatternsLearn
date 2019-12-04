@@ -23,9 +23,13 @@ public class Test {
         * */
         /*使用动态代理生成代理类*/
         System.out.println("动态代理");
+        /*代理对象的调用程序*/
         DynProxy dynProxy = new DynProxy();
+        /*传入被代理对象*/
         dynProxy.setTarge(userService);
+        /*proxy是代理对象*/
         UserService proxy =(UserService)dynProxy.getProxy();
+        /*使用代理方法*/
         proxy.delete();
     }
 }
