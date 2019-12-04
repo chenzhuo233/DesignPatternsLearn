@@ -10,10 +10,22 @@ package Proxy;
 * */
 public class Test {
     public static void main(String[] args) {
-        /*创建被代理角色*/
+        /*静态代理
+        * 创建被代理角色
+        * */
+        System.out.println("静态代理");
         UserServiceImpl userService = new UserServiceImpl();
         /*代理角色*/
         UserProxy userProxy = new UserProxy(userService);
         userProxy.add();
+        /*动态代理
+        * 创建被代理的类对象也就是上面的userService
+        * */
+        /*使用动态代理生成代理类*/
+        System.out.println("动态代理");
+        DynProxy dynProxy = new DynProxy();
+        dynProxy.setTarge(userService);
+        UserService proxy =(UserService)dynProxy.getProxy();
+        proxy.delete();
     }
 }
